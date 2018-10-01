@@ -46,8 +46,8 @@ RUN set -ex; \
       echo "${JQUERY_SHA1}  jquery-${JQUERY_VERSION}.min.js" | sha1sum -c -;
 
 ## Download Dojo
-ENV DOJO_VERSION 1.8.1
-ENV DOJO_SHA1 fe42187cc2ce457e0858e7dbee0f6fd229cc33ef
+ENV DOJO_VERSION 1.8.14
+ENV DOJO_SHA1 e23b9235d8f7a60c8fafbce3c731546d769f820a
 RUN set -ex; \
       cd /app/elkarbackup; \
       mkdir -p web/js && cd web/js; \
