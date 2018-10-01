@@ -61,8 +61,6 @@ COPY composer.json.docker /app/elkarbackup/composer.json
 
 ## Custom parameters.yml template with envars
 COPY parameters.yml.docker /app/elkarbackup/app/config/parameters.yml.dist
-## Delete current parameters.yml, not required anymore on v1.3.0 and higher as it has been deleted in upstream
-RUN rm /app/elkarbackup/app/config/parameters.yml
 
 ## Custom config.yml (to log to stderr)
 COPY config.yml.docker /app/elkarbackup/app/config/config.yml
