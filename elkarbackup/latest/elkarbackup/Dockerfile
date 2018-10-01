@@ -24,8 +24,8 @@ RUN mkdir -p -m 777 \
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 ## Download elkarbackup source code
-ENV ELKARBACKUP_VERSION 1.2.7
-ENV ELKARBACKUP_SHA1 7086f86f4bfdded3bfc64cd22fd595080d2dda12
+ENV ELKARBACKUP_VERSION 1.3.0
+ENV ELKARBACKUP_SHA1 ca53435768baf3bad347bdea4cbdbf3d4704eb31
 RUN set -ex; \
       curl -o elkarbackup.tar.gz -fSL "https://github.com/elkarbackup/elkarbackup/archive/v${ELKARBACKUP_VERSION}.tar.gz"; \
       echo "${ELKARBACKUP_SHA1}  elkarbackup.tar.gz" | sha1sum -c -; \
