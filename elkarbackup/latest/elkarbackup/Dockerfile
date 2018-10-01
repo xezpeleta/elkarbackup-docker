@@ -51,7 +51,7 @@ ENV DOJO_SHA1 e23b9235d8f7a60c8fafbce3c731546d769f820a
 RUN set -ex; \
       cd /app/elkarbackup; \
       mkdir -p web/js && cd web/js; \
-      curl -o dojo.tar.gz "http://download.dojotoolkit.org/release-${DOJO_VERSION}/dojo-release-${DOJO_VERSION}.tar.gz"; \
+      curl -o dojo.tar.gz "https://download.dojotoolkit.org/release-${DOJO_VERSION}/dojo-release-${DOJO_VERSION}.tar.gz"; \
       echo "${DOJO_SHA1}  dojo.tar.gz" | sha1sum -c -; \
       tar -xzf dojo.tar.gz && rm dojo.tar.gz;
 
