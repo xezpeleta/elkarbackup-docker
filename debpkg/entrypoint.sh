@@ -8,8 +8,6 @@ set -e
 #			repository URL
 #			Add "-b <branch>" if you want to select a custom branch. Example:
 #				REPO="https://github.com/xezpeleta/elkarbackup.git -b fix-issue-79"
-# - $PHP_VERSION
-#			Defaults to PHP_VERSION=5
 
 DATA_DIR="/data/elkarbackup"
 EXPORT_DIR="/export"
@@ -29,25 +27,6 @@ git clone $GIT_REPO
 
 cd $DATA_DIR
 ./bootstrap.sh
-
-if [[ -z "$PHP_VERSION" ]];then
-    php=5
-else
-	if [[ "$PHP_VERSION" == 7 ]];then
-		debiancontrol=$DATA_DIR/debian/DEBIAN/control
-		php7version="-php7"
-		php7depends="Depends: acl, debconf, php, php-cli, php-xml, rsnapshot, mysql-client, php-mysql, sudo, apache2, libapache2-mod-php"
-		echo "Selected PHP7, changing debian/control..."
-
-		# Change Control line
-		currentversion=`sed -n -e '/Version/ s/.*\: *//p' $debiancontrol`
-		sed -i "s/Version:.*/Version: $currentversion$php7version/g" $debiancontrol
-
-		# Change Depends line
-		sed -i "s/Depends:.*/$php7depends/g" $debiancontrol
-	fi
-fi
-
 ./makepackage.sh
 
 DEB_FILE=`ls *deb`
